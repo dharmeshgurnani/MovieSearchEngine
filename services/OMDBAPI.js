@@ -11,9 +11,11 @@ function callApi(page) {
     type: "GET",
     url: "https://www.omdbapi.com/?s=" + document.getElementById("searchKeyward").value + "&apikey=3173bd84" + "&page=" + page,
     success: function (result) {
-      document.getElementById("gridRow1").innerHTML = "";
+      document.getElementById("gridRow1").classList.add("hidden");
+      document.getElementById("gridRow2").classList.remove("hidden");
+      document.getElementById("pagination-container").classList.remove("hidden");
+
       document.getElementById("gridRow2").innerHTML = "";
-      document.getElementById("gridRow3").innerHTML = "";
 
       for (let i = 0; i < result.Search.length; i++) {
         if (result.Search[i].Poster === "N/A") {

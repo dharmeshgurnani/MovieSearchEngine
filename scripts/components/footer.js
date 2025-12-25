@@ -41,7 +41,7 @@ var model = {
 var template = Handlebars.compile(`
 <footer class="bg-gray-800 text-white p-4 mt-8">
   <div class="container mx-auto">
-    <div class="flex justify-center items-center mb-4">
+    <div id="pagination-container" class="hidden flex justify-center items-center mb-4">
       <a id="Btnprv" class="bg-yellow-500 text-gray-800 rounded-full p-3 hover:bg-yellow-600 cursor-pointer" onclick="pageprv()">
         <i class="fa fa-backward" aria-hidden="true"></i>
       </a>
