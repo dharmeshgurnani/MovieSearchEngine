@@ -2,18 +2,16 @@ var model = {
   searchInputOnClick: ""
 };
 
-var template = Handlebars.compile(`<!-- MAIN -->
-<div class="main">
-  <div id="gridContainer">
-    <!-- data from ajex response -->
-    <div class='container gridRow1' id="gridRow1">
-      <div style="font-size: 60px;letter-spacing: 15px;color: #0000008a;word-spacing: 20px;">SEARCH TO SEE RESULTS
-      </div>
+var template = Handlebars.compile(`
+<main class="bg-gray-900 text-white min-h-screen">
+  <div id="gridContainer" class="container mx-auto p-4">
+    <div id="gridRow1" class="flex justify-center items-center h-full">
+      <div class="text-4xl text-gray-500 font-bold tracking-wider">SEARCH TO SEE RESULTS</div>
     </div>
-    <div class='container gridRow2' id="gridRow2"></div>
-    <div class='container gridRow3' id="gridRow3"></div>
+    <div id="gridRow2" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+    <div id="gridRow3" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
   </div>
-</div>
+</main>
 `);
 
 document.write(template(model));

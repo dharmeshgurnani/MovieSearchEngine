@@ -39,30 +39,29 @@ var model = {
 };
 
 var template = Handlebars.compile(`
-    <!-- FOOTER -->
-    <footer class="footer-distributed">
-        <div class="containor pageingnation">
-            <a id="Btnprv" class="previous" onclick="pageprv()">
-                <i class="fa fa-backward" aria-hidden="true"></i>
-            </a>
-            <a id="pagenum" class="pagenum">1</a>
-            <a id="Btnnext" class="next" onclick="pagenxt()">
-                <i class="fa fa-forward" aria-hidden="true"></i>
-            </a>
-        </div>
-        <div class="footer-left">
-            <p class="footer-links">
-                {{#each footerlinks}}
-                    <a class="link" rel="nofollow" href="{{{this.href}}}">
-                        <i class="fa {{{this.faicon}}}" aria-hidden="true"></i>
-                        {{{this.text}}}
-                    </a>
-                {{/each}}
-            </p>
-            <p> {{{watermark}}}</p>
-        </div>
-
-    </footer>
+<footer class="bg-gray-800 text-white p-4 mt-8">
+  <div class="container mx-auto">
+    <div class="flex justify-center items-center mb-4">
+      <a id="Btnprv" class="bg-yellow-500 text-gray-800 rounded-full p-3 hover:bg-yellow-600 cursor-pointer" onclick="pageprv()">
+        <i class="fa fa-backward" aria-hidden="true"></i>
+      </a>
+      <span id="pagenum" class="mx-6 text-xl font-bold">1</span>
+      <a id="Btnnext" class="bg-yellow-500 text-gray-800 rounded-full p-3 hover:bg-yellow-600 cursor-pointer" onclick="pagenxt()">
+        <i class="fa fa-forward" aria-hidden="true"></i>
+      </a>
+    </div>
+    <div class="text-center">
+      <div class="flex justify-center space-x-6 mb-3">
+        {{#each footerlinks}}
+          <a class="hover:text-yellow-500 transition-colors duration-300" rel="nofollow" href="{{{this.href}}}" target="_blank">
+            <i class="fa {{{this.faicon}}} fa-2x" aria-hidden="true"></i>
+          </a>
+        {{/each}}
+      </div>
+      <p class="text-gray-500">&copy; {{{watermark}}}</p>
+    </div>
+  </div>
+</footer>
 `);
 
 document.write(template(model));

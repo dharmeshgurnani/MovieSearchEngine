@@ -15,57 +15,22 @@ function callApi(page) {
       document.getElementById("gridRow2").innerHTML = "";
       document.getElementById("gridRow3").innerHTML = "";
 
-      // 1st ROW
-      for (let i = 0; i < 4; i++) {
-        if (!isNaN(result.Search[i].Poster)) {
+      for (let i = 0; i < result.Search.length; i++) {
+        if (result.Search[i].Poster === "N/A") {
           result.Search[i].Poster = 'https://lightning.od-cdn.com/static/img/no-cover_en_US.a8920a302274ea37cfaecb7cf318890e.jpg';
         }
-        document.getElementById("gridRow1").innerHTML +=
-          "<div class='card card" + i + "' style='background: url(" + result.Search[i].Poster + "');' onclick='showinfo(" + i + ")' >" +
-          "<div class='border'>" +
-          "<h2>" + result.Search[i].Title + "</h2>" +
-          "<h2>" + result.Search[i].Year + "</h2>" +
-          "<h2>" + result.Search[i].Type + "</h2>" +
-          "</div>" +
-          "</div>";
+        const movieCard = `
+          <div class="bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="showinfo(${i})">
+            <div class="h-64 bg-cover bg-center" style="background-image: url('${result.Search[i].Poster}')"></div>
+            <div class="p-4">
+              <h2 class="text-xl font-bold text-yellow-500">${result.Search[i].Title}</h2>
+              <p class="text-gray-400">${result.Search[i].Year}</p>
+              <p class="text-gray-500">${result.Search[i].Type}</p>
+            </div>
+          </div>
+        `;
+        document.getElementById("gridRow2").innerHTML += movieCard;
       }
-
-      // 2nd ROW
-      for (let i = 4; i < 8; i++) {
-        if (!isNaN(result.Search[i].Poster)) {
-          result.Search[i].Poster = 'https://lightning.od-cdn.com/static/img/no-cover_en_US.a8920a302274ea37cfaecb7cf318890e.jpg';
-        }
-        document.getElementById("gridRow2").innerHTML +=
-          "<div class='card card" + i + "' style='background: url(" + result.Search[i].Poster + "');' onclick='showinfo(" + i + ")' >" +
-          "<div class='border'>" +
-          "<h2>" + result.Search[i].Title + "</h2>" +
-          "<h2>" + result.Search[i].Year + "</h2>" +
-          "<h2>" + result.Search[i].Type + "</h2>" +
-          "</div>" +
-          "</div>";
-      }
-
-      // 3rd ROW
-      for (let i = 8; i < 10; i++) {
-        if (!isNaN(result.Search[i].Poster)) {
-          result.Search[i].Poster = 'https://lightning.od-cdn.com/static/img/no-cover_en_US.a8920a302274ea37cfaecb7cf318890e.jpg';
-        }
-        document.getElementById("gridRow3").innerHTML +=
-          "<div class='card card" + i + "' style='background: url(" + result.Search[i].Poster + "');' onclick='showinfo(" + i + ")' >" +
-          "<div class='border'>" +
-          "<h2>" + result.Search[i].Title + "</h2>" +
-          "<h2>" + result.Search[i].Year + "</h2>" +
-          "<h2>" + result.Search[i].Type + "</h2>" +
-          "</div>" +
-          "</div>"
-      }
-
-      // Puts Extra cards on for desktop view to fix UI issue
-      document.getElementById("gridRow3").innerHTML +=
-        "<div class='card desktop-only' style='background:transparent'>" +
-        "</div>" +
-        "<div class='card desktop-only' style='background:transparent'>" +
-        "</div>";
       searchData = result.Search;
       getDetails(0);
     },
