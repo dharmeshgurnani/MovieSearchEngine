@@ -37,19 +37,19 @@ $(document).ready(function () {
 
 var model = {};
 var template = Handlebars.compile(`
-<div class="topnav">
-<div class="nav-container-wrapper">
-  <a class="logo" href="#">
-    <i class="fa fa-film logo" aria-hidden="true"></i>
-    <div class="logo">SEARCH MOVIES</div>
-  </a>
-  <div class="search-container">
-    <input type="text" placeholder="Search" name="search" id="searchKeyward">
-    <button id="SearchButton" type="submit">
-      <i class="fa fa-search"></i>
-    </button>
+<div class="bg-gray-800 text-white p-4">
+  <div class="container mx-auto flex justify-between items-center">
+    <a class="flex items-center text-2xl font-bold text-yellow-500" href="#">
+      <i class="fa fa-film mr-2" aria-hidden="true"></i>
+      <div>SEARCH MOVIES</div>
+    </a>
+    <div class="relative w-1/2">
+      <input type="text" placeholder="Search" name="search" id="searchKeyward" class="bg-gray-700 text-white rounded-full py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-yellow-500">
+      <button id="SearchButton" type="submit" class="absolute right-0 top-0 mt-2 mr-2 px-4 py-1 bg-yellow-500 text-gray-800 rounded-full hover:bg-yellow-600">
+        <i class="fa fa-search"></i>
+      </button>
+    </div>
   </div>
-</div>
 </div>
 `);
 
